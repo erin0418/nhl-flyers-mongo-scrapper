@@ -40,10 +40,9 @@ app.get("/scrape", function(req, res) {
   axios.get("http://www.nhl.com/").then(function(response) {
     var $ = cheerio.load(response.data);
     // TODO: Find what we are looking for on site
-    $("article h2").each(function(i, element) {
+    $("h4.headline-link").each(function(i, element) {
       var result = {};
 
-      // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this)
         .children("a")
         .text();
