@@ -27,14 +27,11 @@ app.get("/scrape", function(req, res) {
       var result = {};
 
       result.title = $(this)
-        .children(a).children(h4)
+        .children(a).children(h5)
         .text();
       result.link = $(this)
         .children(a)
         .attr("href");
-      result.preview = $(this)
-        .children(a).children(h5)
-        .text();
 
       db.Articles.create(result)
         .then(function(dbArticles) {
