@@ -1,9 +1,9 @@
 // Grab the articles as a json
 $.getJSON("/articles", function(data) {
   // For each one
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i < 10; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + "www.nhl.com" + data[i].link + "<br />" + data[i].preview + "</p>");
   }
   console.log(data);
 });
@@ -34,9 +34,9 @@ $(document).on("click", "p", function() {
       $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
       // If there's a note in the article
-      if (data.note) {
+      if (data.comment) {
         // Place the body of the note in the body textarea
-        $("#bodyinput").val(data.note.body);
+        $("#bodyinput").val(data.comment.body);
       }
     });
 });
